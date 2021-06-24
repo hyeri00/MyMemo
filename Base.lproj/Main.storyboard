@@ -11,8 +11,8 @@
         <!--목록-->
         <scene sceneID="f8E-PL-9pf">
             <objects>
-                <tableViewController id="Y5P-jh-J4e" sceneMemberID="viewController">
-                    <tableView key="view" clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" id="XQK-No-C00" customClass="MemoListVC">
+                <tableViewController id="Y5P-jh-J4e" customClass="MemoListVCTableViewController" customModule="MyMemo" customModuleProvider="target" sceneMemberID="viewController">
+                    <tableView key="view" clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="80" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" id="XQK-No-C00" customClass="MemoListVC">
                         <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <color key="backgroundColor" systemColor="systemBackgroundColor"/>
@@ -22,7 +22,7 @@
                             <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                         </view>
                         <prototypes>
-                            <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" accessoryType="disclosureIndicator" indentationWidth="10" reuseIdentifier="memoCell" rowHeight="80" id="8pF-Ee-DOh">
+                            <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" accessoryType="disclosureIndicator" indentationWidth="10" reuseIdentifier="memoCell" rowHeight="80" id="8pF-Ee-DOh" customClass="MemoCell" customModule="MyMemo" customModuleProvider="target">
                                 <rect key="frame" x="0.0" y="24.5" width="414" height="80"/>
                                 <autoresizingMask key="autoresizingMask"/>
                                 <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" preservesSuperviewLayoutMargins="YES" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="8pF-Ee-DOh" id="PLt-id-pEI" customClass="MemoCell" customModule="MyMemo" customModuleProvider="target">
@@ -30,7 +30,7 @@
                                     <autoresizingMask key="autoresizingMask"/>
                                     <subviews>
                                         <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="글의 제목" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="O44-v0-O9c">
-                                            <rect key="frame" x="20" y="11" width="286.5" height="21"/>
+                                            <rect key="frame" x="20" y="11" width="281.5" height="21"/>
                                             <constraints>
                                                 <constraint firstAttribute="height" constant="21" id="2od-Ez-6JK"/>
                                             </constraints>
@@ -39,7 +39,7 @@
                                             <nil key="highlightedColor"/>
                                         </label>
                                         <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="1970-01-01 19:24:31" textAlignment="right" lineBreakMode="wordWrap" numberOfLines="2" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="bNh-zb-gTj">
-                                            <rect key="frame" x="316.5" y="21" width="65" height="38"/>
+                                            <rect key="frame" x="311.5" y="21" width="65" height="38"/>
                                             <accessibility key="accessibilityConfiguration" label="날짜"/>
                                             <constraints>
                                                 <constraint firstAttribute="width" constant="65" id="cwt-J7-Y6p"/>
@@ -72,16 +72,28 @@
                                         <constraint firstAttribute="trailingMargin" secondItem="bNh-zb-gTj" secondAttribute="trailing" id="v0h-Rq-gYE"/>
                                     </constraints>
                                 </tableViewCellContentView>
+                                <connections>
+                                    <outlet property="contents" destination="qqG-SI-xVE" id="sKf-Az-Qxq"/>
+                                    <outlet property="regdate" destination="bNh-zb-gTj" id="paf-4I-wXs"/>
+                                    <outlet property="subject" destination="O44-v0-O9c" id="X7A-Pa-uiB"/>
+                                </connections>
                             </tableViewCell>
-                            <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" accessoryType="disclosureIndicator" indentationWidth="10" reuseIdentifier="memoCellWithImage" rowHeight="80" id="BsN-UM-p9L">
+                            <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" accessoryType="disclosureIndicator" indentationWidth="10" reuseIdentifier="memoCellWithImage" rowHeight="80" id="BsN-UM-p9L" customClass="MemoCell" customModule="MyMemo" customModuleProvider="target">
                                 <rect key="frame" x="0.0" y="104.5" width="414" height="80"/>
                                 <autoresizingMask key="autoresizingMask"/>
                                 <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" preservesSuperviewLayoutMargins="YES" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="BsN-UM-p9L" id="52j-Dw-VY3" customClass="MemoCell" customModule="MyMemo" customModuleProvider="target">
                                     <rect key="frame" x="0.0" y="0.0" width="384.5" height="80"/>
                                     <autoresizingMask key="autoresizingMask"/>
                                     <subviews>
+                                        <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="IlH-8D-d8B">
+                                            <rect key="frame" x="20" y="11" width="82.5" height="58"/>
+                                            <constraints>
+                                                <constraint firstAttribute="width" secondItem="IlH-8D-d8B" secondAttribute="height" multiplier="78:55" id="TKr-vf-sRs"/>
+                                                <constraint firstAttribute="width" secondItem="IlH-8D-d8B" secondAttribute="height" multiplier="78:55" id="Xs0-zy-yZM"/>
+                                            </constraints>
+                                        </imageView>
                                         <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="글의 제목" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="uMi-ye-kNQ">
-                                            <rect key="frame" x="109.5" y="11" width="197" height="21"/>
+                                            <rect key="frame" x="109.5" y="11" width="188" height="21"/>
                                             <constraints>
                                                 <constraint firstAttribute="height" constant="21" id="Duy-df-aYT"/>
                                             </constraints>
@@ -90,7 +102,7 @@
                                             <nil key="highlightedColor"/>
                                         </label>
                                         <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="1970-01-01 19:24:31" textAlignment="right" lineBreakMode="wordWrap" numberOfLines="2" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="sU1-fV-RDW">
-                                            <rect key="frame" x="320.5" y="21" width="65" height="38"/>
+                                            <rect key="frame" x="311.5" y="21" width="65" height="38"/>
                                             <constraints>
                                                 <constraint firstAttribute="width" constant="65" id="kgE-tb-esO"/>
                                                 <constraint firstAttribute="width" relation="greaterThanOrEqual" constant="65" id="nsB-vi-JUC"/>
@@ -99,15 +111,8 @@
                                             <nil key="textColor"/>
                                             <nil key="highlightedColor"/>
                                         </label>
-                                        <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="IlH-8D-d8B">
-                                            <rect key="frame" x="20" y="11" width="82.5" height="58"/>
-                                            <constraints>
-                                                <constraint firstAttribute="width" secondItem="IlH-8D-d8B" secondAttribute="height" multiplier="78:55" id="TKr-vf-sRs"/>
-                                                <constraint firstAttribute="width" secondItem="IlH-8D-d8B" secondAttribute="height" multiplier="78:55" id="Xs0-zy-yZM"/>
-                                            </constraints>
-                                        </imageView>
                                         <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="글의 내용" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="2" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="sYf-cw-IZe">
-                                            <rect key="frame" x="112.5" y="37" width="194" height="30"/>
+                                            <rect key="frame" x="112.5" y="37" width="185" height="30"/>
                                             <constraints>
                                                 <constraint firstAttribute="height" constant="30" id="TUU-cR-ZKo"/>
                                             </constraints>
@@ -141,6 +146,9 @@
                                         <constraint firstItem="uMi-ye-kNQ" firstAttribute="leading" secondItem="IlH-8D-d8B" secondAttribute="trailing" constant="7" id="znY-aa-1iy"/>
                                     </constraints>
                                 </tableViewCellContentView>
+                                <connections>
+                                    <outlet property="img" destination="IlH-8D-d8B" id="Lki-gb-R8l"/>
+                                </connections>
                             </tableViewCell>
                         </prototypes>
                         <connections>
@@ -277,8 +285,16 @@
                     </view>
                     <navigationItem key="navigationItem" title="메모 작성" id="kZD-C7-Cm1">
                         <rightBarButtonItems>
-                            <barButtonItem systemItem="camera" id="WzL-Yb-466"/>
-                            <barButtonItem title="저장" id="OSe-17-cc2"/>
+                            <barButtonItem systemItem="camera" id="WzL-Yb-466">
+                                <connections>
+                                    <action selector="pick:" destination="r9K-hY-enI" id="PyO-gr-61Z"/>
+                                </connections>
+                            </barButtonItem>
+                            <barButtonItem title="저장" id="OSe-17-cc2">
+                                <connections>
+                                    <action selector="save:" destination="r9K-hY-enI" id="ELr-HO-6UQ"/>
+                                </connections>
+                            </barButtonItem>
                         </rightBarButtonItems>
                     </navigationItem>
                     <connections>
