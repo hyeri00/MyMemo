@@ -36,7 +36,7 @@ class MemoFormVC: UIViewController, UIImagePickerControllerDelegate, UINavigatio
         let appDelegate = UIApplication.shared.delegate as! AppDelegate
         appDelegate.memolist.append(data)
         
-        _ = self.navigationController?.popViewController(animated: true)
+        _ = self.navigationController?.popViewController(animated: false)
         
         
     }
